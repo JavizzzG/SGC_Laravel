@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->id();
-            $table->string('documento')->unique();
             $table->string('nombre');
-            $table->string('apellido');
-            $table->string('telefono')->nullable();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->tinyInteger('rol')->default(1); // 1: Usuario, 2: Administrador
+            $table->text('descripcion')->nullable();
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->integer('cupo_maximo')->default(30);
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('cursos');
     }
 };
