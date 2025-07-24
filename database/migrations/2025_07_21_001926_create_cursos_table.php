@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->text('descripcion')->nullable();
+            $table->date('fecha_limite_inscripcion')->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->integer('cupo_maximo')->default(30);
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
         });
     }
 

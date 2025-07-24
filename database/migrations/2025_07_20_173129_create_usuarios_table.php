@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->tinyInteger('rol')->default(1); // 1: Usuario, 2: Administrador
+            $table->timestamps();
         });
     }
 

@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
             $table->foreignId('curso_id')->constrained('cursos')->onDelete('cascade');
-            $table->tinyInteger('estado')->default(1); // 1: Pendiente, 2: Aprobado, 3: Rechazado, 4: Terminado, 5: Cancelado, 6: En proceso
+            $table->tinyInteger('estado')->default(1); // 1: Pendiente, 2: Aprobado, 3: Rechazado, 4: Terminado, 5: Cancelado, 6: En curso
             $table->dateTime('fecha_inscripcion')->useCurrent();
+            $table->timestamps();
         });
     }
 

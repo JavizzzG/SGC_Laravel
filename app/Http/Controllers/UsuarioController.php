@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
@@ -11,23 +12,43 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::all();
+        return view('index', compact('usuarios'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function register()
     {
-        return view(' Usuario.create ');
+        return view(' usuarios.register ');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function storeUser(Request $request)
     {
-        //
+        $validos = $request->validate([
+            'documento' => 'required|string|max:20|unique:usuarios,documento',
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'telefono' => 'nullable|string|max:15',
+            'email' => 'required|email|max:255|unique:usuarios,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        Usuario::create([
+            'documento' => $validos['documento'],
+            'nombre' => $validos['nombre'],
+            'apellido' => $validos['apellido'],
+            'telefono' => $validos['telefono'],
+            'email' => $validos['email'],
+            'password' => bcrypt($validos['password']),
+            'rol' => 1 // Rol de usuario por defecto
+        ]);
+
+        return redirect()->route('index')->with('success', 'Usuario registrado exitosamente.');
     }
 
     /**
