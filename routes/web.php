@@ -58,3 +58,7 @@ Route::get('editPerfil', [UsuarioController::class, 'editPerfil'])->name('editPe
 Route::put('updatePerfil', [UsuarioController::class, 'updatePerfil'])->name('updatePerfil')->middleware('auth');
 Route::delete('deletePerfil', [UsuarioController::class, 'deletePerfil'])->name('deletePerfil')->middleware('auth');
 Route::get('mis-cursos', [UsuarioController::class, 'showMisCursos'])->name('mis-cursos')->middleware('auth');
+
+Route::get('/test', function () {
+    return 'Todo bien ✅';
+});
