@@ -15,9 +15,13 @@ body {
 
 /* Navigation styles */
 nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
     background: #2563eb;
-    box-shadow: 0 2px 8px rgba(60, 72, 88, 0.08);
-    padding: 0.5rem 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 12px 0;
 }
 
 nav ul {
@@ -86,6 +90,7 @@ header h1 {
     color: #1e293b;
     font-weight: 700;
     letter-spacing: 1px;
+    padding-top: 30px;
 }
 
 header p {

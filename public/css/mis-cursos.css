@@ -1,0 +1,107 @@
+/* Reset y base */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Fondo */
+body {
+    background: linear-gradient(120deg, #f0f9ff 0%, #e0f2fe 100%);
+    min-height: 100vh;
+    color: #1e293b;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2563eb;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 12px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+nav a:hover {
+    background: #1e3a8a;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    padding-top: 40px;
+}
+
+/* Título principal */
+.title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1e3a8a;
+    margin-bottom: 32px;
+}
+
+/* Secciones */
+.curso-seccion {
+    margin-bottom: 40px;
+}
+
+.seccion-titulo {
+    font-size: 1.4rem;
+    color: #2563eb;
+    margin-bottom: 16px;
+    border-left: 6px solid #3b82f6;
+    padding-left: 12px;
+}
+
+/* Lista de cursos */
+.curso-lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Curso individual */
+.curso-item {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px 24px;
+    transition: box-shadow 0.2s;
+}
+
+.curso-item:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.curso-item h3 {
+    font-size: 1.2rem;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.curso-item p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-bottom: 4px;
+}

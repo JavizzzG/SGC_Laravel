@@ -17,9 +17,21 @@ class CursoController extends Controller
         return view('cursos.cursos', compact('cursos'));
     }
 
+    public function cursosFiltrados(Request $request){
+        $cursos = Curso::where('nombre', 'like', '%' . $request->busqueda . '%')->get();
+
+        return view('cursos.cursos', compact('cursos'));
+    }
+
     public function cursosAdmin()
     {
         $cursos = Curso::all();
+        return view('admins.cursos-admin', compact('cursos'));
+    }
+
+    public function cursosFiltradosAdmin(Request $request){
+        $cursos = Curso::where('nombre', 'like', '%' . $request->busqueda . '%')->get();
+
         return view('admins.cursos-admin', compact('cursos'));
     }
 

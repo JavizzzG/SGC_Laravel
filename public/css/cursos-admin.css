@@ -1,0 +1,169 @@
+/* Reset */
+body, h1, h2, p, ul, li, a, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Fondo general */
+body {
+    background: linear-gradient(120deg, #f0f9ff 0%, #e0f2fe 100%);
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2563eb;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 12px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    list-style: none;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background: #1e40af;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.search-input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+.search-button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.search-button:hover {
+    background: #1e40af;
+}
+
+
+/* Contenedor */
+.container {
+    max-width: 960px;
+    margin: 32px auto;
+    padding: 0 16px;
+    padding-top: 40px;
+}
+
+/* Alertas */
+.alert {
+    max-width: 600px;
+    margin: 16px auto;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+}
+
+.alert-danger {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+}
+
+/* Título y botón crear */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 2rem;
+    color: #1e3a8a;
+}
+
+.btn-create {
+    background: #1e40af;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s;
+    font-weight: 500;
+}
+
+.btn-create:hover {
+    background: #2563eb;
+}
+
+/* Lista de cursos */
+.course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.course-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.course-card h2 {
+    font-size: 1.4rem;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.course-card p {
+    font-size: 1rem;
+    color: #334155;
+    margin-bottom: 12px;
+    text-align: justify;
+}
+
+.btn-details {
+    text-decoration: none;
+    color: #1d4ed8;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.btn-details:hover {
+    color: #1e40af;
+}

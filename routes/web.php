@@ -32,6 +32,9 @@ Route::post('logout', [AuthController::class, 'logout'])->middleware('auth')->na
 
 Route::get('cursos', [CursoController::class, 'cursos'])->name('cursos');
 Route::get('cursos-admin', [CursoController::class, 'cursosAdmin'])->name('cursos-admin')->middleware('auth', 'admin');
+Route::get('cursosFiltrados', [CursoController::class, 'cursosFiltrados'])->name('cursosFiltrados');
+Route::get('cursosFiltradosAdmin', [CursoController::class, 'cursosFiltradosAdmin'])->name('cursosFiltradosAdmin')->middleware('auth', 'admin');
+Route::get('usuariosFiltrados', [InscripcionController::class, 'showFiltrados'])->name('usuariosFiltrados')->middleware('auth', 'admin');
 
 Route::get('create', [CursoController::class, 'create'])->name('createCurso')->middleware('auth', 'admin');
 Route::post('store', [CursoController::class, 'store'])->name('storeCurso')->middleware('auth', 'admin');

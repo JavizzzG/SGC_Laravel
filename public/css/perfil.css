@@ -1,0 +1,133 @@
+/* Reset y base */
+body, h1, h2, p, ul, li, a, button, form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Fondo */
+body {
+    background: linear-gradient(120deg, #f0f9ff 0%, #e0f2fe 100%);
+    min-height: 100vh;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2563eb;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 12px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+nav a:hover {
+    background: #1e3a8a;
+}
+
+/* Contenedor */
+.perfil-container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Card */
+.perfil-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(60, 72, 88, 0.12);
+    padding: 32px 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Título */
+.perfil-title {
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Información */
+.perfil-card p {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #374151;
+}
+
+/* Botones */
+.perfil-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #1e3a8a;
+}
+
+.btn-secondary {
+    background: #e0f2fe;
+    color: #1e40af;
+    border: 1px solid #93c5fd;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #bfdbfe;
+}
+
+/* Alertas */
+.alert {
+    max-width: 600px;
+    margin: 24px auto;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
