@@ -15,6 +15,8 @@ WORKDIR /var/www
 # Instala dependencias PHP
 RUN composer install --no-dev --optimize-autoloader
 
+RUN php artisan storage:link
+
 # Da permisos a Laravel
 RUN chown -R www-data:www-data /var/www && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 

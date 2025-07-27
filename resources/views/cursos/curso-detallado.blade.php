@@ -29,7 +29,7 @@
 
                 @if($curso->imagen)
                     <div class="curso-imagen">
-                        <img src="{{ asset('storage/' . $curso->imagen) }}" alt="Imagen del Curso">
+                        <img src="{{ secure_asset('storage/' . $curso->imagen) }}" alt="Imagen del Curso">
                     </div>
                 @endif
             </div>
