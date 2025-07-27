@@ -13,6 +13,7 @@ class Curso extends Model
         'fecha_inicio',
         'fecha_fin',
         'cupo_maximo',
-        'activo'
+        'activo',
+        'imagen'
     ];
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('fecha_fin');
             $table->integer('cupo_maximo')->default(30);
             $table->boolean('activo')->default(true);
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }

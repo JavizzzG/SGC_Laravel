@@ -16,7 +16,7 @@
         </div>
     @endif
     <h1>Editar Curso</h1>
-    <form method="POST" action="{{ route('updateCurso', $curso) }}">
+    <form method="POST" action="{{ route('updateCurso', $curso) }} " enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <label for="nombre">Nombre:</label>
@@ -41,6 +41,15 @@
             <option value="1" {{ $curso->activo ? 'selected' : '' }}>Activo</option>
             <option value="0" {{ !$curso->activo ? 'selected' : '' }}>Inactivo</option>
         </select>
+
+        @if( $curso->imagen )
+            <img src="{{ asset('storage/' . $curso->imagen) }}" alt="Imagen del curso" style="max-width: 300px; max-height: 200px;">
+        @else
+            <p>No hay imagen del curso.</p>
+        @endif
+
+        <label for="imagen">Cambiar imagen del Curso:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" value="{{ old('imagen') }}">
         
         <button type="submit">Actualizar Curso</button>
     </form>

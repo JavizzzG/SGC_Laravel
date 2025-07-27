@@ -13,6 +13,10 @@
     <p><strong>Fecha de Fin:</strong> {{ $curso->fecha_fin }}</p>
     <p><strong>Cupo Máximo:</strong> {{ $curso->cupo_maximo }}</p>
     <p><strong>Estado:</strong> {{ $curso->activo ? 'Activo' : 'Inactivo' }}</p>
+    @if($curso->imagen)
+        <p><strong>Imagen del Curso:</strong></p>
+        <img src="{{ asset('storage/' . $curso->imagen) }}" alt="Imagen del Curso" style="max-width: 300px; max-height: 200px;">
+    @endif
     <h2>Acciones</h2>
     <form method="GET" action="{{ route('editCurso', $curso) }}">
         <button type="submit">Editar Curso</button>
@@ -22,5 +26,7 @@
         @method('DELETE')
         <button type="submit">Eliminar Curso</button>
     </form>
+    <h2><a href="{{ route('cursos-admin') }}">Volver a Cursos</a></h2>
+    <h2><a href="{{ route('inscri-detalles', $curso->id) }}">Ver Inscripciones</a></h2>
 </body>
 </html>

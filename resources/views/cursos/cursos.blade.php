@@ -9,12 +9,11 @@
     <h1>Cursos</h1>
     <ul>
         @foreach($cursos as $curso)
-            <li>{{ $curso }}</li>
-            <form method="POST" action="{{ route('showCurso') }}">
-                @csrf
-                <input type="hidden" name="id" value="{{ $curso->id }}">
-                <button type="submit">Ver detalles</button>
-            </form>
+        @if( $curso->activo && $curso->fecha_limite_inscripcion > now())
+            <li>{{ $curso->nombre }}</li>
+            <p>{{ $curso->descripcion }}</p>
+            <a href="{{ route('showCurso', $curso) }}">Ver detalles</a>
+        @endif
         @endforeach
     </ul>
 </body>
