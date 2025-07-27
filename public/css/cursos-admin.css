@@ -26,6 +26,7 @@ nav {
 
 nav ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
     list-style: none;
@@ -166,4 +167,10 @@ nav a:hover {
 
 .btn-details:hover {
     color: #1e40af;
+}
+
+@media (max-width: 540px) {
+    .container {
+        padding-top: 100px;
+    }
 }

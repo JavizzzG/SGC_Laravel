@@ -25,6 +25,7 @@ nav {
 
 nav ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
     padding: 14px 0;
@@ -153,3 +154,11 @@ select {
     color: #991b1b;
     border: 1px solid #f87171;
 }
+
+@media (max-width: 550px) {
+    .container {
+        padding-top: 100px;
+    }
+}
+
+
