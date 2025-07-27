@@ -66,6 +66,20 @@ class InscripcionController extends Controller
         return view('inscripciones.inscri-detalles', compact('curso', 'inscripciones', 'usuarios'));
     }
 
+    public function showFiltrados(Request $request){
+        $inscripciones = Inscripcion::where('curso_id', $request->curso_id)->get();
+        $curso = Curso::findOrFail($request->curso_id);
+        $usuarioIds = $inscripciones->pluck('usuario_id')->all(); // Convierte a array
+        $usuariosAntes = Usuario::whereIn('id', $usuarioIds);
+        $usuarios = $usuariosAntes->where(function ($query) use ($request) {
+            $query->where('nombre', 'like', '%' . $request->busqueda . '%')
+                ->orWhere('apellido', 'like', '%' . $request->busqueda . '%')
+                ->orWhere('documento', 'like', '%' . $request->busqueda . '%');
+        })->get();
+
+        return view('inscripciones.inscri-detalles', compact('curso', 'inscripciones', 'usuarios'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

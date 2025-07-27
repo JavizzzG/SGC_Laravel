@@ -1,74 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Cursos</title>
+    <link rel="stylesheet" href="{{ secure_asset('css/mis-cursos.css') }}">
 </head>
 <body>
-    <h1>Mis Cursos</h1>
-    <h2>Activos</h2>
-<ul>
-    @foreach($cursos as $curso)
-        @php
-            $inscripcion = $inscripciones->where('curso_id', $curso->id)->first();
-        @endphp
-        @if($inscripcion && $inscripcion->estado == 2)
-            <li>
-                <p>{{ $curso->nombre }}</p>
-                <p>{{ $curso->descripcion}}</p>
-                <p>Finalizado: {{ $curso->fecha_fin}}</p>
-            </li>
-        @endif
-    @endforeach
-</ul>
+    <nav>
+        <ul>
+            <li><a href="{{ route('inicio') }}">Inicio</a></li>
+            <li><a href="{{ route('showPerfil') }}">Perfil</a></li>
+            <li><a href="{{ route('cursos') }}">Cursos</a></li>
+            <li><a href="{{ url()->previous() }}">Volver</a></li>
+        </ul>
+    </nav>
 
-<h2>Inactivos</h2>
-<ul>
-    @foreach($cursos as $curso)
-        @php
-            $inscripcion = $inscripciones->where('curso_id', $curso->id)->first();
-        @endphp
-        @if($inscripcion && $inscripcion->estado == 3)
-            <li>
-                <p>{{ $curso->nombre }}</p>
-                <p>{{ $curso->descripcion}}</p>
-                <p>Finalizado: {{ $curso->fecha_fin}}</p>
-            </li>
-        @endif
-    @endforeach
-</ul>
+    <div class="container">
+        <h1 class="title">Mis Cursos</h1>
 
-<h2>Finalizados</h2>
-<ul>
-    @foreach($cursos as $curso)
         @php
-            $inscripcion = $inscripciones->where('curso_id', $curso->id)->first();
+            $estados = [
+                2 => 'Activos',
+                3 => 'Inactivos',
+                4 => 'Finalizados',
+                5 => 'Cancelados'
+            ];
         @endphp
-        @if($inscripcion && $inscripcion->estado == 4)
-            <li>
-                <p>{{ $curso->nombre }}</p>
-                <p>{{ $curso->descripcion}}</p>
-                <p>Finalizado: {{ $curso->fecha_fin}}</p>
-            </li>
-        @endif
-    @endforeach
-</ul>
 
-<h2>Cancelados</h2>
-<ul>
-    @foreach($cursos as $curso)
-        @php
-            $inscripcion = $inscripciones->where('curso_id', $curso->id)->first();
-        @endphp
-        @if($inscripcion && $inscripcion->estado == 5)
-            <li>
-                <p>{{ $curso->nombre }}</p>
-                <p>{{ $curso->descripcion}}</p>
-                <p>Finalizado: {{ $curso->fecha_fin}}</p>
-            </li>
-        @endif
-    @endforeach
-</ul>
+        @foreach($estados as $estado => $titulo)
+            <section class="curso-seccion">
+                <h2 class="seccion-titulo">{{ $titulo }}</h2>
+                <ul class="curso-lista">
+                    @foreach($cursos as $curso)
+                        @php
+                            $inscripcion = $inscripciones->where('curso_id', $curso->id)->first();
+                        @endphp
+                        @if($inscripcion && $inscripcion->estado == $estado)
+                            <li class="curso-item">
+                                <h3>{{ $curso->nombre }}</h3>
+                                <p>{{ $curso->descripcion }}</p>
+                                <p><strong>Finaliza:</strong> {{ $curso->fecha_fin }}</p>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+            </section>
+        @endforeach
+    </div>
 </body>
 </html>

@@ -12,6 +12,7 @@ use App\Http\Controllers\InscripcionController;
 
 
 Route::get('/', [UsuarioController::class, 'index'])->name('index');
+
 Route::get('inicio', function () {
     return view('usuarios.inicio');
 })->name('inicio')->middleware('auth');
@@ -31,6 +32,9 @@ Route::post('logout', [AuthController::class, 'logout'])->middleware('auth')->na
 
 Route::get('cursos', [CursoController::class, 'cursos'])->name('cursos');
 Route::get('cursos-admin', [CursoController::class, 'cursosAdmin'])->name('cursos-admin')->middleware('auth', 'admin');
+Route::get('cursosFiltrados', [CursoController::class, 'cursosFiltrados'])->name('cursosFiltrados');
+Route::get('cursosFiltradosAdmin', [CursoController::class, 'cursosFiltradosAdmin'])->name('cursosFiltradosAdmin')->middleware('auth', 'admin');
+Route::get('usuariosFiltrados', [InscripcionController::class, 'showFiltrados'])->name('usuariosFiltrados')->middleware('auth', 'admin');
 
 Route::get('create', [CursoController::class, 'create'])->name('createCurso')->middleware('auth', 'admin');
 Route::post('store', [CursoController::class, 'store'])->name('storeCurso')->middleware('auth', 'admin');
@@ -50,3 +54,7 @@ Route::get('editPerfil', [UsuarioController::class, 'editPerfil'])->name('editPe
 Route::put('updatePerfil', [UsuarioController::class, 'updatePerfil'])->name('updatePerfil')->middleware('auth');
 Route::delete('deletePerfil', [UsuarioController::class, 'deletePerfil'])->name('deletePerfil')->middleware('auth');
 Route::get('mis-cursos', [UsuarioController::class, 'showMisCursos'])->name('mis-cursos')->middleware('auth');
+
+Route::get('/test', function () {
+    return 'Todo bien ✅';
+});
