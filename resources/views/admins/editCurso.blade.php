@@ -59,7 +59,7 @@
             @if($curso->imagen)
                 <div class="imagen-actual">
                     <p>Imagen actual:</p>
-                    <img src="{{ asset('storage/' . $curso->imagen) }}" alt="Imagen del curso">
+                    <img src="{{ secure_asset('storage/' . $curso->imagen) }}" alt="Imagen del curso">
                 </div>
             @else
                 <p>No hay imagen del curso.</p>
