@@ -1,0 +1,155 @@
+/* Reset y base */
+body, h1, h2, p, a, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Fondo */
+body {
+    background: linear-gradient(120deg, #f0f9ff 0%, #e0f2fe 100%);
+    min-height: 100vh;
+    color: #1e293b;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2563eb;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 12px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+nav a:hover {
+    background: #1e3a8a;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.search-input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+.search-button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.search-button:hover {
+    background: #1e40af;
+}
+
+
+/* Contenedor principal */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    padding-top: 40px;
+}
+
+/* Título de página */
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1e3a8a;
+    margin-bottom: 32px;
+}
+
+/* Tarjetas de cursos */
+.cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.curso-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.2s;
+}
+
+.curso-card:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.curso-card h2 {
+    font-size: 1.3rem;
+    color: #1e293b;
+    margin-bottom: 12px;
+}
+
+.curso-card p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-bottom: 20px;
+}
+
+/* Botón */
+.btn-ver {
+    text-align: center;
+    background: #2563eb;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-ver:hover {
+    background: #1e3a8a;
+}
+
+.alert {
+    max-width: 600px;
+    margin: 24px auto;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}

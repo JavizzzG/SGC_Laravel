@@ -1,0 +1,139 @@
+/* Reset y base */
+body, h1, h2, p, a, ul, li, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Fondo */
+body {
+    background: linear-gradient(120deg, #f0f9ff 0%, #e0f2fe 100%);
+    min-height: 100vh;
+    color: #1e293b;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2563eb;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 12px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+nav a:hover {
+    background: #1e3a8a;
+}
+
+/* Contenedor */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    padding-top: 50px;
+    text-align: center;
+}
+
+/* Títulos */
+.title {
+    font-size: 2rem;
+    color: #1e3a8a;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #1e40af;
+    margin-bottom: 8px;
+}
+
+.curso-nombre {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+
+/* Formulario */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botones {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Botones */
+.btn-confirmar {
+    background: #2563eb;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-confirmar:hover {
+    background: #1e3a8a;
+}
+
+.btn-cancelar {
+    background: #e5e7eb;
+    color: #1e293b;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-cancelar:hover {
+    background: #cbd5e1;
+}
+
+/* Alertas */
+.alert {
+    max-width: 600px;
+    margin: 16px auto;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+}
+
+.alert-danger {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+}
