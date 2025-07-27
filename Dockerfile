@@ -23,19 +23,16 @@ COPY . /var/www
 # Establecer directorio de trabajo
 WORKDIR /var/www
 
-# Instalar dependencias de Laravel
-RUN composer install --no-dev --optimize-autoloader
+# Asegurar permisos correctos para Laravel
+RUN chmod -R 775 storage bootstrap/cache && chown -R www-data:www-data storage bootstrap/cache
 
-# Dar permisos
-RUN chown -R www-data:www-data /var/www && chmod -R 755 /var/www/storage
+# Forzar instalación limpia de dependencias Laravel
+RUN rm -rf vendor/ && composer install --no-dev --optimize-autoloader || { echo "Composer install failed"; exit 1; }
 
-# Generar APP_KEY automáticamente (si no lo has generado antes)
-# RUN php artisan key:generate
-
-# Enlazar storage
+# Enlazar storage (si falla no detiene build)
 RUN php artisan storage:link || true
 
-# Cache de configuración
+# Generar cache de configuración
 RUN php artisan config:cache
 
 # Copiar archivo de configuración de Nginx
@@ -47,4 +44,5 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Exponer el puerto
 EXPOSE 80
 
+# Ejecutar supervisord al iniciar
 CMD ["/usr/bin/supervisord"]
