@@ -11,14 +11,7 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\InscripcionController;
 
 
-// Route::get('/', [UsuarioController::class, 'index'])->name('index');
-Route::get('/', function () {
-    return response()->json([
-        'status' => 'Laravel arrancó correctamente',
-        'app_env' => env('APP_ENV'),
-        'debug' => env('APP_DEBUG'),
-    ]);
-});
+Route::get('/', [UsuarioController::class, 'index'])->name('index');
 
 Route::get('inicio', function () {
     return view('usuarios.inicio');
