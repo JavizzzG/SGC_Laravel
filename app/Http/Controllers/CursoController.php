@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use Illuminate\Support\Facades\Storage;
 
 class CursoController extends Controller
 {
@@ -43,7 +44,13 @@ class CursoController extends Controller
             'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
             'cupo_maximo' => 'required|integer|min:1',
             'activo' => 'boolean',
+            'imagen' => 'image|nullable'
         ]);
+
+        if($request->hasFile('imagen')){
+            $path = $request->file('imagen')->store('cursos', 'public');
+            $validated['imagen'] = $path;
+        }
 
         Curso::create($validated);
         return redirect()->route('cursos-admin')->with('success', 'Curso creado exitosamente.');
@@ -52,9 +59,9 @@ class CursoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showCurso(Curso $id)
+    public function showCurso(Curso $curso)
     {
-        return view('cursos.cursoDetallado', compact('id'));
+        return view('cursos.curso-detallado', compact('curso'));
     }
 
     public function showCursoAdmin(Curso $curso)
@@ -83,7 +90,16 @@ class CursoController extends Controller
             'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
             'cupo_maximo' => 'required|integer|min:1',
             'activo' => 'boolean',
+            'imagen' => 'image|nullable'
         ]);
+
+        if($request->hasFile('imagen')){
+            if($curso->imagen){
+                Storage::disk('public')->delete($curso->imagen);
+            }
+            $path = $request->file('imagen')->store('cursos', 'public');
+            $validated['imagen'] = $path;
+        }
 
         $curso->update($validated);
         return redirect()->route('cursos-admin')->with('success', 'Curso actualizado exitosamente.');
@@ -95,6 +111,9 @@ class CursoController extends Controller
     public function destroy(string $id)
     {
         $curso = Curso::findOrFail($id);
+        if($curso->imagen){
+            Storage::disk('public')->delete($curso->imagen);
+        }
         $curso->delete();
         return redirect()->route('cursos-admin')->with('success', 'Curso eliminado exitosamente.');
     }

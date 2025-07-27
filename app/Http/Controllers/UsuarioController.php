@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Curso;
+use App\Models\Inscripcion;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -12,8 +15,14 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
-        return view('index', compact('usuarios'));
+        return view('index');
+    }
+
+    public function inicioAdmin()
+    {
+        $cursos = Curso::all();
+        $inscripciones = Inscripcion::all();
+        return view('admins.inicio-admin', compact('cursos', 'inscripciones'));
     }
 
     /**
@@ -54,25 +63,45 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showPerfil()
     {
-        //
+        return view('usuarios.perfil');
+    }
+
+    public function showMisCursos(){
+        $inscripciones = Inscripcion::where('usuario_id', auth()->user()->id)->get();
+        $cursos = Curso::all()->whereIn('id', $inscripciones->pluck('curso_id'));
+        return view('usuarios.mis-cursos', compact('cursos', 'inscripciones'));
+    }
+
+    public function editPerfil()
+    {
+        return view('usuarios.edit-perfil');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updatePerfil(Request $request)
     {
-        //
+        $usuario = auth()->user();
+
+        $validos = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:usuarios,email,' . $usuario->id,
+            'documento' => 'required|string|max:20|unique:usuarios,documento,' . $usuario->id,
+            'telefono' => 'nullable|string|max:15',
+        ]);
+
+        
+        $usuario->update($validos);
+
+        return redirect()->route('showPerfil')->with('success', 'Perfil actualizado exitosamente.');
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Curso;
+use App\Models\Inscripcion;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -60,7 +62,7 @@ class AuthController extends Controller
             if(Auth::user()->rol==1){
                 return redirect()->route('inicio')->with('success', 'Bienvenido, ' . Auth::user()->nombre);
             }else{
-                return redirect()->route('inicio-admin')->with('success', 'Bienvenido a admin, ' . Auth::user()->nombre);
+                return redirect()->route('inicio-admin');
             }
         }
 

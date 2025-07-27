@@ -16,7 +16,7 @@
         </div>
     @endif
     <h1>Crear Curso</h1>
-    <form method="POST" action="{{ route('storeCurso') }}">
+    <form method="POST" action="{{ route('storeCurso') }}" enctype="multipart/form-data">
         @csrf
         <label for="nombre">Nombre del Curso:</label>
         <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" required>
@@ -34,6 +34,8 @@
             <option value="1" {{ old('activo', true) ? 'selected' : '' }}>Activo</option>
             <option value="0" {{ old('activo', false) ? 'selected' : '' }}>Inactivo</option>
         </select>
+        <label for="imagen">Imagen del Curso:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" value="{{ old('imagen') }}">
         <button type="submit">Crear Curso</button>
     </form>
 </body>
